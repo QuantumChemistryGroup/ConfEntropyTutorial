@@ -31,7 +31,7 @@ f) run Uniconf on generated file ```m1_00_PEt2Ph-PBE0-D3-TZ-uni.inp```:
 python3 /path/to/programs/split_xyz_E.py m1_00_PEt2Ph-PBE0-D3-TZ-uniMM.xyz
 rm m1_00_PEt2Ph-PBE0-D3-TZ-uniMM.xyz
 ```
-3) copy all *xyz files into subfloder in the other folder, e.g. ```Step_3/raw_data``` and opt+freq them with any method/code. Here I used xtb and GFN2. ORCA/B97-3c or Priroda/QM3 are also good choices. After optimization remove all *xyz files.
+3) copy all *xyz files into subfloder in the other folder, e.g. ```Step_3/raw_data``` and opt+freq them with any method/code. Here I used xtb and GFN2 (options: ```--ohess extreme --cycles 5000 --acc 0.01 --iterations 5000```). ORCA/B97-3c or Priroda/QM3 are also good choices. After optimization remove all *xyz files.
 
 4) For each opt+freq files extract E, thermodynamic corrections, and Cartesian coordinates:
 
