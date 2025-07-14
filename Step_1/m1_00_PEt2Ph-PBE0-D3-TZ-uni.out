@@ -1,0 +1,92 @@
+	
+	Uniconf v.1.0.1 (08.11.2024)
+	Copyright: Yury Minenkov
+	N.N. Semenov Federal Research Center
+	for Chemical Physics RAS
+	119991 Moscow, The Russian Federation
+	Kosygina street, 4
+	
+Starting time : 2025-07-14 11:05:18
+Start reading input file: m1_00_PEt2Ph-PBE0-D3-TZ-uni.inp 
+End reading input file (success): m1_00_PEt2Ph-PBE0-D3-TZ-uni.inp 
+
+Key program settings: 
+
+Program run (conf | optimize | fit): conf
+Print level (0 | 1 | 2 | 3): 0
+Connectivity (read | write): write
+Optimization library: nlopt
+Global optimization algorithm: none
+Local optimization algorithm: nlopt_ln_sbplx
+ --- Potential Energy Function parameters --- 
+UFF electrostatic energy coefficient (KEL= 1.000000)
+UFF dispersion-repulsion coefficient (KVW= 1.000000)
+DFT-D2 dispersion coefficient (KGD= 0.000000)
+Hydrogen bonding coefficients: 
+	HB1= 0.250000
+	HB2= 0.350000
+	HB3= 0.650000
+	OCHRG= -0.500000
+	HCHRG= 0.250000
+	HBL= 3.500000 (cut off)
+Number of conformers for preliminary generation: MK=0 
+MAXCONF (AFTER ITER1) = 150000000
+KMEANS (AFTER ITER1) = -1
+EDIFF=0.100000 & RMSD=0.050000 for duplicate search
+Conf ruling out based on non-HD DIST?: false, DIST treshold: 1.400000
+KMEANS (AFTER ITER2) = -1
+Maxium number of conformers to print: 150000000
+Clustering property: ixx
+SCALE (translational part from 0.0 to 0.99): 0.750000
+SCALE (orbital motion (false || true) ): false
+Preliminary sorting (after ITER1) property: e
+Maxium chunk-size for clustering: 300000
+Conformational search strategy: 1
+Clustering algorithm: k-means
+Clustering debug: 0
+Centroid center? 0 
+COM center (if == -1, then mol com): 0
+
+Program is executed (fragmentation & rotational bonds checks.)
+
+NO SEPARATE FRAGMENTS HAVE BEEN IDENTIFUED 
+The number of rotatble bonds: 3
+Atoms:          1          2 Maximum angle:          300 Step:           60
+Atoms:          1         20 Maximum angle:          300 Step:           60
+Atoms:          1          9 Maximum angle:          135 Step:           45
+
+ Conformational search starts : 2025-07-14 11:05:18
+
+Number of cores (threads): 12
+Number of conformations based on dihedrals: 144
+MONTECARLO=0 (1-true, 0-false)
+Total number of conformers: 144
+
+Minimization has been completed at : 2025-07-14 11:05:18
+Sorting (QUICKSORT) starts (serial) at : 2025-07-14 11:05:18
+Sorting by energies.
+Sorting done at:  : 2025-07-14 11:05:18
+Number of conformers before getmin (MAXCONF=150000000): 75
+Number of conformers after getmin (MAXCONF=150000000): 75 
+No clustering, all conformers are passed to ITER2
+ITER1 completed at : 2025-07-14 11:05:18
+Final generation of conformers (ITER2).
+ITER2 finishes : 2025-07-14 11:05:18
+Number of conformers before duplicates: 75 
+Duplicates removal is finished : 2025-07-14 11:05:18
+Number of conformers after duplicates: 75
+Sorting (serial) starts : 2025-07-14 11:05:18
+Sorting finished at : 2025-07-14 11:05:18
+Conformer generattion is done : 2025-07-14 11:05:18
+75 conformers have been generated 
+
+Computing the clustering properties (ixx) for 75 conformers
+Strategy: 1
+Strategy (1): clustering is done; results are printed
+Number of conformers conformers: 75
+N conformers: 75
+Quicksort starts : 2025-07-14 11:05:18
+Quicksort finishes : 2025-07-14 11:05:18
+Getting MAXCONFPRINT=55000000 minimum energy conformers
+Printing the conformers (MM after clustering) in the file 
+Program terminated normally : 2025-07-14 11:05:18
