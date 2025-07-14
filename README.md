@@ -53,7 +53,7 @@ For xtb:
 
 ```python3 /path/to/programs/td_input_xtb.py m1_00_PEt2Ph-PBE0-D3-TZ-uniMM_34-XXX.out float(scale) ```
 
-Here: float(scale) is the scaling coefficient for harmonic frequencies.
+Here: float(scale) is the scaling coefficient for harmonic frequencies, e.g. 0.97 for B97-3c, and 1 for both xtb and Priroda.
 
 If imaginary frequencies were found, they can be either removed manually with an additional optimization step, or they can be converted into real ones with ```td_input_XXX.py``` scripts.
 
