@@ -96,3 +96,4 @@ When I run the script:
 
 Total enthalpic correction will be: Hcorr(DFT) + 0.00068 (Hartree)
 
+In case of any questions do not hesitate to contact us: Yury.Minenkov"at"gmail.com 
