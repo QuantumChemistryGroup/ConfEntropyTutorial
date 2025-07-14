@@ -31,6 +31,68 @@ f) run Uniconf on generated file ```m1_00_PEt2Ph-PBE0-D3-TZ-uni.inp```:
 python3 /path/to/programs/split_xyz_E.py m1_00_PEt2Ph-PBE0-D3-TZ-uniMM.xyz
 rm m1_00_PEt2Ph-PBE0-D3-TZ-uniMM.xyz
 ```
-3) copy all *xyz files into subfloder into the other folder, e.g. ```Step_3/raw_data``` and opt+freq them with any method/code
+3) copy all *xyz files into subfloder into the other folder, e.g. ```Step_3/raw_data``` and opt+freq them with any method/code. Here I used xtb and GFN2. ORCA/B97-3c or Priroda/QM3 are also good choices. After optimization remove all *xyz files.
 
-4)  
+4) For each opt+freq files extract E, thermodynamic corrections, and Cartesian coordinates:
+
+For ORCA:
+
+```python3 /path/to/programs/last_coord_orca_E.py m1_00_PEt2Ph-PBE0-D3-TZ-uniMM_34-XXX.out```
+
+```python3 /path/to/programs/td_input_orca.py m1_00_PEt2Ph-PBE0-D3-TZ-uniMM_34-XXX.out float(scale)```
+
+For Priroda: 
+
+```python3 /path/to/programs/pr_xyz_E.py m1_00_PEt2Ph-PBE0-D3-TZ-uniMM_34-XXX.out```
+
+```python3 /path/to/programs/td_input_priroda.py m1_00_PEt2Ph-PBE0-D3-TZ-uniMM_34-XXX.out float(scale) ```
+
+For xtb:
+
+```python3 /path/to/programs/last_coord_xtb_E.py m1_00_PEt2Ph-PBE0-D3-TZ-uniMM_34-XXX.out```
+
+```python3 /path/to/programs/td_input_xtb.py m1_00_PEt2Ph-PBE0-D3-TZ-uniMM_34-XXX.out float(scale) ```
+
+Here: float(scale) is the scaling coefficient for harmonic frequencies.
+
+Then, get rid off the duplicates running the following script in this folder:
+
+```python3 /path/to/programs/rmsdp_min.py 12 0.1 10 5```
+
+Check file ```rmsd_min.txt``` manually - there are listed couples of conformers for which rmsd difference below 0.5 Angstroem was obtained. If necessary, remove some duplicates manually.
+
+Finally, copy all unique conformers to one folder above:
+
+```python3 /path/to/programs/work_with_bash_cp.py ```
+
+Then go up by one directory
+
+```cd ..```
+
+6) In folder Step_3 you have both *xyz and *dat files for all unique conformers.
+
+7) Run the script in the folder:
+
+   ```python /path/to/programs/ensemble.py T1 T2```, where T1, T2 - temperatures. By default, ensemble.py uses GR_25_4_1 model. Open the script and modify line ```td = ['GR_25_4_1']``` with your model of choice, HO, GR_100_4_1, etc. 
+
+When I run the script:
+
+```python3 ../programs/ensemble.py 298.15```, I obtained files ```SI_S.txt``` and ```SI_H.txt```
+
+```SI_H.txt``` - contains enthalpic corrections for all temeratures and statistical thermodynamic models in the following format: Temperature, TD model, name_of_the_most_stable_conformer, Boltzman_weight_of_the_most_stable_conformer, number_of_conformers, Enthalpic_correcrtion_in_Hartree for the most stable conformer, Hcorr_av - Hcorr_1 : difference between the ensemble average enthalpic correction and that of the most stable conformer, total enthalpic correction (the summ of previous two)
+
+```298.15    GR_25_4_1 m1_00_PEt2Ph-PBE0-D3-TZ-uniMM_54_-T_opt.xyz  0.21    21 0.23181 0.00068 0.23249```
+
+
+```SI_S.txt``` - contains enthalpic corrections for all temeratures and statistical thermodynamic models in the following format: Temperature, TD model, name_of_the_most_stable_conformer, Boltzman_weight_of_the_most_stable_conformer, number_of_conformers, Entropy for the most stable conformer, S_av - S_1 : difference between the ensemble average entropy and that of the most stable conformer, conformational entropy, total entropy (the summ of previous three)
+
+```298.15    GR_25_4_1 m1_00_PEt2Ph-PBE0-D3-TZ-uniMM_54_-T_opt.xyz  0.21    21 111.95   0.16   4.40 116.51```
+
+```Hcorr_av - Hcorr_1``` is ```H(T)-H(0)``` in CREST
+```S_av - S_1``` is ```δSrrho``` in CREST
+```conformational entropy``` is ```Sconf``` in CREST
+
+```m1_00_PEt2Ph-PBE0-D3-TZ-uniMM_54_-T_opt.xyz``` turned out to be the most stable conformer according to dG GFN2 and msRRHO(25) model. It can further be treated with DFT. Then, total entropy will be that of DFT freq calculation + (S_av - S_1) + conformational entropy, i.e. S(DFT) + 0.16 + 4.40 e.u. (cal (mol K)-1)
+
+Total enthalpic correction will be: Hcorr(DFT) + 0.00068 (Hartree)
+
