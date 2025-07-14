@@ -55,6 +55,10 @@ For xtb:
 
 Here: float(scale) is the scaling coefficient for harmonic frequencies.
 
+If imaginary frequencies were found, they can be either removed manually with an additional optimization step, or they can be converted into real ones with ```td_input_XXX.py``` scripts.
+
+After the opt+freq procedure, remove ```g98.out``` file.
+
 Then, get rid off the duplicates running the following script in this folder:
 
 ```python3 /path/to/programs/rmsdp_min.py 12 0.1 10 5```
