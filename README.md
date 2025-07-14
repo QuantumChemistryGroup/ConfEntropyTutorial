@@ -85,7 +85,7 @@ When I run the script:
 
 ```python3 ../programs/ensemble.py 298.15```, I obtained files ```SI_S.txt``` and ```SI_H.txt```
 
-```SI_H.txt``` - contains enthalpic corrections for all temeratures and statistical thermodynamic models in the following format: Temperature, TD model, name_of_the_most_stable_conformer, Boltzman_weight_of_the_most_stable_conformer, number_of_conformers, Enthalpic_correcrtion_in_Hartree for the most stable conformer, Hcorr_av - Hcorr_1 : difference between the ensemble average enthalpic correction and that of the most stable conformer, total enthalpic correction (the summ of previous two)
+```SI_H.txt``` - contains enthalpic corrections for all temeratures and statistical thermodynamic models in the following format: Temperature, TD model, name_of_the_most_stable_conformer, Boltzman_weight_of_the_most_stable_conformer, number_of_conformers, Enthalpic_correction_in_Hartree for the most stable conformer, Hcorr_av - Hcorr_1 : difference between the ensemble average enthalpic correction and that of the most stable conformer, total enthalpic correction (the summ of previous two)
 
 ```298.15    GR_25_4_1 m1_00_PEt2Ph-PBE0-D3-TZ-uniMM_54_-T_opt.xyz  0.21    21 0.23181 0.00068 0.23249```
 
