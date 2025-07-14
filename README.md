@@ -63,7 +63,7 @@ Then, get rid off the duplicates running the following script in this folder:
 
 ```python3 /path/to/programs/rmsdp_min.py 12 0.1 10 5```
 
-Check file ```rmsd_min.txt``` manually - there are listed couples of conformers for which rmsd difference below 0.5 Angstroem was obtained. If necessary, remove some duplicates manually.
+Check file ```rmsd_min.txt``` manually - there are listed couples of conformers for which rmsd difference below 0.5 Angstroem was obtained. If necessary, remove some duplicates manually. Note: if you remove some conformers, it will affect the results below.
 
 Finally, copy all unique conformers to one folder above:
 
